@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ channel_name }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+</head>
+<body>
+  <h2>Channel: {{ channel_name }}</h2>
+  <div id="chat-box"></div>
+  <input id="message" placeholder="Type a message">
+  <button onclick="sendMessage()">Send</button>
+
+  <script>
+    const socket = io();
+    const username = "{{ username }}";
+    const channel = "{{ channel_name }}";
+
+    socket.emit('join', {username, channel});
+
+    // Load chat history
+    fetch(`/get_messages/${channel}`)
+      .then(res => res.json())
+      .then(messages => {
+        const box = document.getElementById('chat-box');
+        messages.forEach(m => {
+          const line = document.createElement('div');
+          line.textContent = `[${m.timestamp}] ${m.username}: ${m.content}`;
+          box.appendChild(line);
+        });
+      });
+
+    socket.on('receive_message', data => {
+      const box = document.getElementById('chat-box');
+      const line = document.createElement('div');
+      line.textContent = `${data.username}: ${data.message}`;
+      box.appendChild(line);
+      box.scrollTop = box.scrollHeight;
+    });
+
+    function sendMessage() {
+      const msg = document.getElementById('message').value;
+      if (msg.trim() !== '') {
+        socket.emit('send_message', {username, channel, message: msg});
+        document.getElementById('message').value = '';
+      }
+    }
+  </script>
+</body>
+</html>
+

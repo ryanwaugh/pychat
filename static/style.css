@@ -1,0 +1,94 @@
+/* ----- General dark theme ----- */
+body {
+  background-color: #121212;
+  color: #e0e0e0;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+/* Headings */
+h2, h3 {
+  color: #ffffff;
+}
+
+/* Links */
+a {
+  color: #58a6ff;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Forms */
+input, button {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 8px;
+  margin-top: 5px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #58a6ff;
+}
+
+button {
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+button:hover {
+  background-color: #2a2a2a;
+}
+
+/* Error messages */
+p[style*="color:red"] {
+  color: #ff6b6b !important;
+}
+
+/* Channel list */
+ul {
+  list-style: none;
+  padding: 0;
+}
+li {
+  background-color: #1e1e1e;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+li:hover {
+  background-color: #2a2a2a;
+}
+
+/* Chat box */
+#chat-box {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 10px;
+  height: 400px;
+  overflow-y: auto;
+  font-family: monospace;
+}
+
+#chat-box div {
+  margin-bottom: 6px;
+}
+
+/* Message input area */
+#message {
+  width: 80%;
+}
+button {
+  width: 15%;
+}
+
+/* Layout helpers */
+form, .controls {
+  margin-bottom: 10px;
+}

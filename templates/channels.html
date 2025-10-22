@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Channels</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h2>Welcome, {{ username }}</h2>
+  <form method="POST">
+    <input name="channel" placeholder="New channel name" required>
+    <button type="submit">Create</button>
+  </form>
+
+  <h3>Available Channels:</h3>
+  <ul>
+    {% for c in channels %}
+      <li><a href="/chat/{{ c }}">{{ c }}</a></li>
+    {% endfor %}
+  </ul>
+
+  <a href="/logout">Logout</a>
+</body>
+</html>

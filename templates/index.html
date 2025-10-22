@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Channels</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h2>Welcome, {{ username }}!</h2>
+  <h3>Available Channels</h3>
+  <ul>
+    {% for chan in channels %}
+      <li><a href="{{ url_for('chat', channel=chan) }}">#{{ chan }}</a></li>
+    {% endfor %}
+  </ul>
+  <p><a href="{{ url_for('login') }}">Logout (just close browser to clear session)</a></p>
+</body>
+</html>
