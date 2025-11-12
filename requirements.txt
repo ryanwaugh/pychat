@@ -1,4 +1,5 @@
-dotenv
 Flask
 Flask-SocketIO
 werkzeug
+python-dotenv
+sqlite3
